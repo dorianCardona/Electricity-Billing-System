@@ -1,9 +1,11 @@
 package com.unosquare.electricity.billing.system;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.*;
 
+/**
+ *
+ * @author dorian.cardona
+ */
 public class Conn {
 
     Connection c;
@@ -12,10 +14,10 @@ public class Conn {
     public Conn() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/ebs", "root", "");
+            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/ebs", "root", "1234567890");
             s = c.createStatement();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
         }
     }
 }
